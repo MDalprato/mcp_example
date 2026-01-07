@@ -1,14 +1,11 @@
-from mcp.client import MCPClient
-from openai import OpenAI
+from fastmcp import Client
 
-mcp = MCPClient("http://localhost:3333")
-client = OpenAI()
+with Client.command(["python", "mcp_server.py"]) as client:
+    tools = client.list_tools()
+    print("TOOLS:", tools)
 
-response = client.responses.create(
-    model="gpt-5",
-    input="Why are my tests slow?",
-    tools=mcp.tools(),
-    resources=mcp.resources()
-)
-
-print(response.output_text)
+    result = client.call_tool(
+        "say_hello",
+        {"name": "Marco"}
+    )
+    print("RESULT:", result)

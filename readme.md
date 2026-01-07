@@ -18,7 +18,13 @@ pip install mcp openai
 python3 mcp_server.py
 ```
 
-```sh
-export OPENAI_API_KEY="your_key_here"
-python3 client.py
-```
+## Test
+
+curl -X POST http://127.0.0.1:3333/mcp \
+  -H "Content-Type: application/json" \
+  -d '{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "list_tools"
+  }'
+
