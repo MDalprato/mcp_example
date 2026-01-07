@@ -1,6 +1,10 @@
 # MCP Example
 
-Minimal MCP server/client example in Python.
+A minimal Python example of an MCP server and client.
+
+## Requirements
+
+- Python 3.10+
 
 ## Setup
 
@@ -12,14 +16,15 @@ pip install --upgrade pip
 pip install mcp openai
 ```
 
-## Run
+## Run the server
 
 ```sh
 python3 mcp_server.py
 ```
 
-## Test
+## Test the endpoint
 
+```sh
 curl -X POST http://127.0.0.1:3333/mcp \
   -H "Content-Type: application/json" \
   -d '{
@@ -27,4 +32,4 @@ curl -X POST http://127.0.0.1:3333/mcp \
     "id": 1,
     "method": "list_tools"
   }'
-
+```
